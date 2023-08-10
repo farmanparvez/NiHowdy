@@ -81,14 +81,14 @@ export const getCardDetaiails = createAsyncThunk(
     "card/getCardDetaiails",
     async (_, thunkAPI) => {
         try {
-            const auth = localStorage.getItem('accessToken') || localStorage.getItem('googleToken')
-            let data
-            if (auth) {
-                data = await getProfileSavingCardAPI()
-            } else {
-                data = await getCardDetaiailsAPI();
-            }
-            return data
+            // const auth = typeof window !== 'undefined' && localStorage.getItem('accessToken') || localStorage.getItem('googleToken')
+            // let data
+            // if (auth) {
+            //     data = await getProfileSavingCardAPI()
+            // } else {
+            //     data = await getCardDetaiailsAPI();
+            // }
+            return await getCardDetaiailsAPI();
         } catch (error) {
             const message = error?.response?.data?.message || error.toString();
             thunkAPI.dispatch(notificationHandler({ status: 'error', message: typeof message === 'string' ? { en: message } : message }))

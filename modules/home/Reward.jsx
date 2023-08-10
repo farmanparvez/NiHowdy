@@ -14,7 +14,8 @@ const Reward = ({ t }) => {
     const dispatch = useDispatch();
     const [bitcoinPrice, setBitcoinPrice] = useState(0.05 * 100000)
     const reward = popularDrug[0]?.reward
-    console.log(popularDrug)
+    // console.log(popularDrug)
+
     useEffect(() => {
         if (reward) {
             dispatch(getCurrencyPrice({ amount: reward, from_currency_id: 1, to_currency_symbol: 'USD' }));

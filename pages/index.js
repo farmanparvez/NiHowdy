@@ -2,7 +2,8 @@ import { Inter } from 'next/font/google'
 import HomeModule from "../modules/home"
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { getPopularDrugs } from '@/store/actions/homeMedicineAction'
+import { getPopularDrugs, getCardDetaiails, getRewardValueInYear  } from '@/store/actions/homeMedicineAction'
+import { wrapper } from '@/store/store'
 const inter = Inter({ subsets: ['latin'] })
 
 function Home(prop) {
@@ -17,17 +18,20 @@ function Home(prop) {
 }
 
 
-export async function getStaticProps({ locale }) {
-  // const data  = 
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, [
-        'common',
-        'translation',
-      ])),
-      // Will be passed to the page component as props
-    },
-  }
-}
+export const getStaticProps = wrapper.getStaticProps((store) =>
+  async ({ locale }) => {
+    await store.dispatch(getPopularDrugs())
+    await store.dispatch(getCardDetaiails())
+    await store.dispatch(getRewardValueInYear())
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'translation',
+        ])),
+        // Will be passed to the page component as props
+      },
+    }
+  })
 
 export default Home

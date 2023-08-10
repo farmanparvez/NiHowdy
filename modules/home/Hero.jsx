@@ -1,14 +1,14 @@
 import Image from "next/image"
 import bitcoin from "../../assets/bitcoin.webp"
 import medicineBox from "../../assets/medicineBox.webp"
-import { Input } from 'antd';
-import { useRouter } from "next/router";
+// import { Input } from 'antd';
+// import { useRouter } from "next/router";
 import { Trans } from "next-i18next";
 import { AutoCompleteComponent } from "/components/ui";
 
 const Hero = ({ t }) => {
-    const router = useRouter()
-    console.log(router.locale)
+    // const router = useRouter()
+    // console.log(router.locale)
     // console.log(t)
     return (
         <div className="bg-csBG h-[300px] relative z-10">

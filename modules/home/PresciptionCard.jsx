@@ -67,9 +67,9 @@ const PresciptionCard = ({ t }) => {
     const [sendEmailLoading, setEmailLoading] = useState(false);
     const auth = typeof window !== "undefined" && (localStorage.getItem('accessToken') || localStorage.getItem('googleToken'))
 
-    useEffect(() => {
-        dispatch(getCardDetaiails())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getCardDetaiails())
+    // }, [dispatch])
 
     const footer = {
         background: "linear-gradient(92.54deg, #333652 17.15%, #5e5151 33.5%, #856f4f 48.85%, #ab8e49 63.21%, #d2ae3f 77.57%, #fad02c 90.92%)",

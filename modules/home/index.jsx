@@ -8,15 +8,15 @@ import Reward from "./Reward"
 import BitcoinValveSection from "./BitcoinValveSection"
 import FrequentlyAskQuestion from "./FrequentlyAskQuestion"
 import SumbitForNewLetter from "./SumbitForNewLetter"
-import { useDispatch } from "react-redux"
-import { getPopularDrugs } from "../../store/actions/homeMedicineAction";
+// import { useDispatch } from "react-redux"
+// import { getPopularDrugs } from "../../store/actions/homeMedicineAction";
 
 
 const Home = (props) => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getPopularDrugs())
-  }, [dispatch])
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(getPopularDrugs())
+  // }, [dispatch])
 
   return (
     <Fragment>
