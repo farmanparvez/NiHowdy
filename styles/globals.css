@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+}
+
+/* Button custimize css------------------------------------------------------------> */
+.pr {
+  background: #fad02c !important;
+  color: #313131 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-color: #fad02c !important;
+  border-radius: 3px !important;
+  display: flex !important;
+  justify-items: center;
+  align-items: center;
+}
+.pr:hover {
+  background: #313131 !important;
+  color: #fad02c !important;
+}
+
+.sc {
+  color: #313131 !important;
+  box-shadow: 0px 0px 4px #333652 !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  border-radius: 3px !important;
+  display: flex !important;
+  justify-items: center;
+  align-items: center;
+}
+
+.sc:hover {
+  background: #fad02c !important;
+  color: #313131 !important;
+}
+
+.bl {
+  background: #333652 !important;
+  color: #fad02c !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-color: #333652 !important;
+  border-radius: 3px !important;
+  display: flex !important;
+  justify-items: center;
+  align-items: center;
+}
+.bl:hover {
+  background: #fad02c !important;
+  color: #333652 !important;
+}
+
+/* // mdeicinedetails----------------------------> */
+.search-btn
+  .ant-input-search
+  > .ant-input-group
+  > .ant-input-group-addon:last-child
+  .ant-input-search-button {
+  background: #fad02c !important;
+  color: #313131 !important;
+}
+
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 14px solid transparent;
+  border-right: 15px solid #fad02c;
+  border-bottom: 14px solid transparent;
+}
+
+/* // home page bitcoin section ----------------------> */
+.bition-value {
+  background: linear-gradient(312.69deg, #333652 45.43%, #1c289a 100%);
+}
+
+.horizontal-bar {
+  background: linear-gradient(180.04deg, #fad02c 0.04%, #efe1a8 85.35%);
+}
+
+.vertical-bar {
+  background: linear-gradient(
+    173.79deg,
+    #fad02c 4.91%,
+    rgba(243, 220, 130, 0.5) 68.86%
+  );
+}
+
+/* .csModal-----------------------------------------------------------------------> */
+.csModal .ant-modal .ant-modal-content {
+  background-color: #333652 !important;
+  color: #fff;
+}
+
+.csModal .ant-modal .ant-modal-title {
+  background-color: #333652 !important;
+  color: #fff !important;
+}
+
+.csModal .ant-modal .ant-modal-close-x {
+  color: #fff !important;
+}
