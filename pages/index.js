@@ -18,7 +18,7 @@ function Home(prop) {
 }
 
 
-export const getStaticProps = wrapper.getStaticProps((store) =>
+export const getServerSideProps = wrapper.getServerSideProps((store) =>
   async ({ locale }) => {
     await store.dispatch(getPopularDrugs())
     await store.dispatch(getCardDetaiails())
