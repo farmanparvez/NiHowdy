@@ -26,8 +26,11 @@ export const getCurrencyPrice = createAsyncThunk(
     "access/getCurrencyPrice",
     async (data, thunkAPI) => {
         try {
+            console.log(data)
             const res = await getCurrencyPriceAPI(data);
+            console.log(res)
             const bitcoinPrice = await getBicoinPriceAPI(1);
+            console.log(bitcoinPrice)
             return { res, oneBitcoinPrice: bitcoinPrice?.data?.price }
         } catch (error) {
             const message = error?.response?.data?.message || error.toString();

@@ -17,7 +17,9 @@ const Reward = ({ t }) => {
     // console.log(popularDrug)
 
     useEffect(() => {
+        console.log("rewardout")
         if (reward) {
+            console.log("rewardin")
             dispatch(getCurrencyPrice({ amount: reward, from_currency_id: 1, to_currency_symbol: 'USD' }));
             setBitcoinPrice(reward * 100000)
         }
