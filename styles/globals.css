@@ -26,6 +26,36 @@ body {
     rgb(var(--background-start-rgb)); */
 }
 
+#nprogress .bar {
+  background: #fad02c !important;
+}
+
+#nprogress .spinner .spinner-icon {
+  border-top-color: #fad02c;
+  border-left-color: #fad02c;
+}
+
+/* csInputNumber--------------------------------------------------------------------------------> */
+.csInputNumber ::placeholder {
+  color: #f8f8f8 !important;
+  opacity: 0.8 !important;
+}
+
+.csInputNumber .ant-input-number .ant-input-number-input {
+  color: white !important;
+}
+
+/* CsOTPInput--------------------------------------------------------------------------> */
+.csInput {
+  min-width: 40px;
+  min-height: 40px;
+  background: blue;
+}
+.csInput ::placeholder {
+  color: #f8f8f8 !important;
+  opacity: 0.8 !important;
+}
+
 /* Button custimize css------------------------------------------------------------> */
 .pr {
   background: #fad02c !important;
@@ -123,4 +153,27 @@ body {
 
 .csModal .ant-modal .ant-modal-close-x {
   color: #fff !important;
+}
+
+/* .csInput------------------------------------------------------------------------------------------> */
+.csInput ::placeholder {
+  color: #f8f8f8 !important;
+  opacity: 0.8 !important;
+}
+
+/* dashboard---------------------------------------------------------------------------------------------- */
+.ant-menu-light:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #fad02c !important;
+}
+
+.sidebar-cs {
+  background: #fff !important;
+  @media screen and (max-width: 991px) {
+    position: absolute !important;
+    z-index: 1 !important;
+    min-height: 100% !important;
+  }
+}
+.sidebar-cs .ant-layout-sider-zero-width-trigger {
+  top: 8px !important;
 }

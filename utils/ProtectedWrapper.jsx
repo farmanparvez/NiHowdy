@@ -1,18 +1,14 @@
-// import { CookieHandler } from "../utils/cookieHandler"
-import { Navigate } from "react-router-dom";
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/router"
+import { CsSpin } from "@/components/ui"
 
 export default function ProtectedWrapper({ children }) {
-  const auth = localStorage.getItem('accessToken') || localStorage.getItem('googleToken')
-  // const data = localStorage.getItem( 'googleToken')
-  // console.log(("datapp:", data))
-  // console.log(("protectWrapper:", auth))
-  
-  if (auth) {
+  const { status } = useSession()
+  const { push } = useRouter()
+  if (status === 'loading') return <CsSpin />
+  if (status === 'authenticated') {
     return children
   } else {
-    <Navigate to='/signin' replace />;
-    // window.location.href = '/signin';
+    push('/signin')
   }
-  // return auth ? children : <Navigate to='/signin' replace />;
-  // return auth ? children : window.location.href = '/signin';
 }

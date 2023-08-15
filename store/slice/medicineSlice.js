@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   searchDrugs, drugDetailByName, drugImageByNdCode, getMedicinePricesByGeoCode,
-  getMedicinePricesByCode
+  getMedicinePricesByCode, drugDescriptionByName
 } from "../actions/medicineAction";
+import { Tsukimi_Rounded } from "next/font/google";
 
 const medicineSlice = createSlice({
   name: "medicine",
@@ -28,7 +29,8 @@ const medicineSlice = createSlice({
     isUpdate: false,
     isMecicinePriceLoadedSuccess: false,
     discountPercent: false,
-    drugDescription: []
+    drugDescription: [],
+    isLoadingDrug: true
   },
   reducers: {
     reset: (state) => {
@@ -141,16 +143,24 @@ const medicineSlice = createSlice({
         state.quantity = action.payload?.length > 0 && action.payload[0]?.defaultData[0]?.types[0]?.strength[0]?.Quantity
         state.initialQuantity = action.payload?.length > 0 && action.payload[0]?.defaultData[0]?.types[0]?.strength[0]?.Quantity[0].Quantity
         state.NDCCode = action.payload?.length > 0 && action.payload[0]?.defaultData[0]?.types[0]?.strength[0]?.Quantity[0].NDCCode
-        state.drugDescription = { drug_name: action.payload[0].drug_name, description: action.payload[0].description }
+        // state.drugDescription = { drug_name: action.payload[0].drug_name, description: action.payload[0].description }
         state.isUpdate = true;
         state.isLoading = false
       })
       .addCase(drugDetailByName.rejected, (state,) => {
         state.isLoading = false;
       })
-      // .addCase(drugDescriptionByName.fulfilled, (state, action) => {
-      //   state.drugDescription = action.payload.data
-      // })
+      .addCase(drugDescriptionByName.pending, (state,) => {
+        state.isLoadingDrug = true;
+      })
+      .addCase(drugDescriptionByName.fulfilled, (state, action) => {
+        // console.log(action)
+        state.drugDescription = action.payload.data
+        state.isLoadingDrug = false;
+      })
+      .addCase(drugDescriptionByName.rejected, (state,) => {
+        state.isLoadingDrug = false;
+      })
       .addCase(getMedicinePricesByCode.pending, (state) => {
         state.isLoading = true;
       })

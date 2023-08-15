@@ -6,6 +6,7 @@ import medicineBox from "../../assets/medicineBox.webp"
 import { Trans } from "next-i18next";
 import { AutoCompleteComponent } from "/components/ui";
 
+
 const Hero = ({ t }) => {
     // const router = useRouter()
     // console.log(router.locale)
@@ -27,6 +28,10 @@ const Hero = ({ t }) => {
                 <div className="sm:text-[20px] text-[16px] my-4">{t("Save on Prescriptions and Earn Bitcoin")}</div>
                 <div>
                     <AutoCompleteComponent t={t} />
+                    <select className="text-black" name="" id="" defaultValue={'3'} onChange={(e => console.log(e.target.value))}>
+                        <option value="1">sdfs</option>
+                        <option value="2">dfs</option>
+                    </select>
                 </div>
             </div>
         </div>

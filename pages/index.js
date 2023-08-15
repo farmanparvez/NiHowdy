@@ -4,10 +4,10 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getPopularDrugs, getCardDetaiails, getRewardValueInYear } from '@/store/actions/homeMedicineAction'
 import { wrapper } from '@/store/store'
+import RootLayout from '@/components/RootLayout/RootLayout'
 const inter = Inter({ subsets: ['latin'] })
 
 function Home(prop) {
-  console.log(prop)
   const props = useTranslation('common')
 
   return (
@@ -16,6 +16,10 @@ function Home(prop) {
     </main>
   )
 }
+
+Home.getLayout = (page) => {
+  return <RootLayout>{page}</RootLayout>;
+};
 
 
 export const getStaticProps = wrapper.getStaticProps((store) =>

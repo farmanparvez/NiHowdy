@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react"
 import Hero from "./Hero"
 import AvailablePharmacies from "./AvailablePharmacies"
 import HowItsWorks from "./HowItsWorks"
-import PresciptionCard from "./PresciptionCard"
+// import PresciptionCard from "./PresciptionCard"
 import TopRated from "./TopRated"
 import Reward from "./Reward"
 import BitcoinValveSection from "./BitcoinValveSection"
@@ -23,7 +23,7 @@ const Home = (props) => {
       <Hero {...props} />
       <AvailablePharmacies {...props} />
       <HowItsWorks {...props} />
-      <PresciptionCard {...props} />
+      {/* <PresciptionCard {...props} /> */}
       <TopRated {...props} />
       <Reward {...props} />
       <BitcoinValveSection {...props} />

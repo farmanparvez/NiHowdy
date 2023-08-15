@@ -35,20 +35,20 @@ export const searchDrugs = createAsyncThunk(
   }
 );
 
-// export const drugDescriptionByName = createAsyncThunk(
-//   "drug/drugDescriptionByName",
-//   async (name, thunkAPI) => {
-//     try {
-//       var drugDescription = await drugDescriptionAPI(name);
-//       // console.log(data)
-//       return drugDescription
-//     } catch (error) {
-//       const message = error?.response?.data?.message || error.toString();
-//       thunkAPI.dispatch(notificationHandler({ status: 'error', message: typeof message === 'string' ? { en: message } : message }));
-//       return thunkAPI.rejectWithValue(message);
-//     }
-//   }
-// );
+export const drugDescriptionByName = createAsyncThunk(
+  "drug/drugDescriptionByName",
+  async (name, thunkAPI) => {
+    try {
+      console.log(name)
+      const drugDescription = await drugDescriptionAPI(name);
+      return drugDescription
+    } catch (error) {
+      const message = error?.response?.data?.message || error.toString();
+      thunkAPI.dispatch(notificationHandler({ status: 'error', message: typeof message === 'string' ? { en: message } : message }));
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 // export const drugDetailByName = createAsyncThunk(
 //   "drug/drugDetailAPI",
@@ -73,22 +73,25 @@ export const searchDrugs = createAsyncThunk(
 //     }
 //   }
 // );
+
 export const drugDetailByName = createAsyncThunk(
   "drug/drugDetailAPI",
   async (name, thunkAPI) => {
     try {
-      const all = await Promise.all([
-        await drugDescriptionAPI({ drug_name: name?.DrugName }),
-        await drugDetailAPI(name)
-      ])
-      var data = await all[1]
+      // const all = await Promise.all([
+      //   await drugDescriptionAPI({ drug_name: name?.DrugName }),
+      //   await drugDetailAPI(name)
+      // ])
+      var data = await drugDetailAPI(name)
+      console.log(data)
       var Data = [...data][0]?.data
       const defaultValue = Data[0]?.brand_name_code === "Brand" ? Data[0]?.brand : Data[0]?.generic
       if (Data?.length > 0) {
         Data[0].defaultData = defaultValue
-        Data[0].drug_name = all[0].data[0].drug_name
-        Data[0].description = all[0].data[0].description
+        // Data[0].drug_name = all[0].data[0].drug_name
+        // Data[0].description = all[0].data[0].description
       }
+      console.log(Data)
       return Data;
     } catch (error) {
       const message = error?.response?.data?.message || error.toString();

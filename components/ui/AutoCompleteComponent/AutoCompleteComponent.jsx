@@ -14,8 +14,9 @@ const AutoCompleteComponent = ({ t, componentLocation }) => {
     ({ medicine }) => medicine
   );
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  const onSelect = (data) => { router.push(`/${data}`) }
+  const { push } = useRouter()
+
+  const onSelect = (name) => { push(`/drug/${name}`) }
 
   useEffect(() => {
     var timer;
