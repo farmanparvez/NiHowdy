@@ -1,5 +1,5 @@
 import MedicineDetail from "./MedicineDetail";
-import PresciptioCard from "../home/PresciptionCard";
+import PresciptioCard from "../home/components/PresciptionCard";
 // import Footer from "../../layout/FooterBottom";
 // import { Row } from "antd";
 // import { useParams } from "react-router-dom";
@@ -18,7 +18,7 @@ const Index = (props) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if(name){
+    if (name) {
       dispatch(setEarBitcoin(null))
       dispatch(drugDescriptionByName({ drug_name: name }))
       dispatch(drugDetailByName({ DrugName: name }))

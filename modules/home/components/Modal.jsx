@@ -1,6 +1,6 @@
-import { CsModal, CsButton, CsInput } from "../../components/ui";
+import { CsModal, CsButton, CsInput } from "../../../components/ui";
 import { Form } from "antd";
-import { emailDefautSavingCard } from "../../store/actions/homeMedicineAction";
+import { emailDefautSavingCard } from "../../../store/actions/homeMedicineAction";
 import { useDispatch } from 'react-redux';
 import html2canvas from "html2canvas";
 import { useState } from "react";
@@ -35,7 +35,7 @@ const Otp = ({ setVisible, exportRef }) => {
           name="email"
           rules={[
             {
-              type:'email',
+              type: 'email',
               required: true,
               message: "Please input your valid email!",
             },

@@ -1,7 +1,7 @@
 import { Row, Col, Input, Form } from "antd";
-import { newsletterEmail } from "../../store/actions/homeMedicineAction";
+import { newsletterEmail } from "../../../store/actions/homeMedicineAction";
 import { useDispatch, useSelector } from "react-redux";
-import { CsButton } from "../../components/ui";
+import { CsButton } from "../../../components/ui";
 import { Trans } from 'next-i18next'
 
 const SumbitForNewLetter = (props) => {

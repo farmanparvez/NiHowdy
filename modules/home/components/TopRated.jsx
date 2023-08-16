@@ -1,17 +1,17 @@
 import { Row, Col, Result, Empty } from "antd";
-import img1 from "../../assets/bitcoin.svg"
+import img1 from "../../../assets/bitcoin.svg"
 import { Trans } from "next-i18next";
-import { useSelector } from "react-redux";
-import { CsSpin } from "../../components/ui";
+// import { useSelector } from "react-redux";
+import { CsSpin } from "../../../components/ui";
 import Image from "next/image";
 
-const TopRated = ({ t }) => {
-    const { popularDrug, isLoading, isError } = useSelector(({ home }) => home)
+const TopRated = ({ t, data, isLoading, isError }) => {
+    // const { popularDrug, isLoading, isError } = useSelector(({ home }) => home)
 
     const medicine = <>
         {!isLoading && isError && <Result status="500" title="500" subTitle="Sorry, something went wrong." />}
-        {!isLoading && !isError && popularDrug?.length === 0 && <Empty />}
-        {!isLoading && !isError && popularDrug?.length > 0 && popularDrug?.slice(0, 3)?.map((res, index) =>
+        {!isLoading && !isError && data?.data?.length === 0 && <Empty />}
+        {!isLoading && !isError && data?.data?.length > 0 && data?.data?.slice(0, 3)?.map((res, index) =>
             <div key={index} className="py-3 flex max-sm:flex-wrap gap-5 items-end sm:justify-start">
                 <div className="flex items-center">
                     <div className="w-[120px]"><span className="text-[18px] font-semibold">{res?.drugname}</span></div>

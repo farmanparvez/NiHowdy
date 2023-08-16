@@ -13,7 +13,7 @@ export const getPopularDrugs = createAsyncThunk(
     "drug/getPopularDrugs",
     async (_, thunkAPI) => {
         try {
-            return await getPopularDrugAPI();;
+            return await getPopularDrugAPI();
         } catch (error) {
             const message = error?.response?.data?.message || error.toString();
             thunkAPI.dispatch(notificationHandler({ status: 'error', message: typeof message === 'string' ? { en: message } : message }))

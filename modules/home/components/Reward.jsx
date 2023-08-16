@@ -1,19 +1,20 @@
 import { Row, Col } from "antd"
-import mySvg from "../../assets/logo.svg";
-import img from "../../assets/bitcoin.svg"
+import mySvg from "../../../assets/logo.svg";
+import img from "../../../assets/bitcoin.svg"
 import { Select } from "antd";
-import { getCurrencyPrice } from "../../store/actions/homeMedicineAction";
+import { getCurrencyPrice } from "../../../store/actions/homeMedicineAction";
 import { useDispatch, useSelector } from "react-redux";
-import { CsSpin } from "../../components/ui";
+import { CsSpin } from "../../../components/ui";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 const { Option } = Select
 
-const Reward = ({ t }) => {
-    const { isLoading, btcPrice, bitcoindPrice, popularDrug } = useSelector(({ home }) => home)
+const Reward = ({ t, data, isLoading }) => {
+    const { btcPrice, bitcoindPrice } = useSelector(({ home }) => home)
     const dispatch = useDispatch();
     const [bitcoinPrice, setBitcoinPrice] = useState(0.05 * 100000)
-    const reward = popularDrug[0]?.reward
+    const reward = data?.data[0]?.reward
+    // console.log(data?.data)
 
     useEffect(() => {
         if (reward) {
@@ -78,7 +79,7 @@ const Reward = ({ t }) => {
                         </div>
                         <div className='flex flex-col min-[990px]:basis-1/2 justify-center w-full'>
                             <Row className="py-2">
-                                <Col span={22}><span className="max-sm:text-[32px] text-[48px]  font-semibold csTextColor-1">{t("How much Bitcoin can you earn with")} {popularDrug[0]?.drugname}</span></Col>
+                                <Col span={22}><span className="max-sm:text-[32px] text-[48px]  font-semibold csTextColor-1">{t("How much Bitcoin can you earn with")} {data?.data[0]?.drugname}</span></Col>
                             </Row>
                             <Row gutter={20} align='middle' className="py-2">
                                 <Col ><span className="text-[20px] font-normal csTextColor-1">{t("The potential for Bitcoin rewards to increase and appreciate in value is a possibility to consider, which may occur over time.")}</span></Col>

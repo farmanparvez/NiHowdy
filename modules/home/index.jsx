@@ -1,22 +1,28 @@
 import { Fragment, useEffect } from "react"
-import Hero from "./Hero"
-import AvailablePharmacies from "./AvailablePharmacies"
-import HowItsWorks from "./HowItsWorks"
+import Hero from "./components/Hero"
+import AvailablePharmacies from "./components/AvailablePharmacies"
+import HowItsWorks from "./components/HowItsWorks"
 // import PresciptionCard from "./PresciptionCard"
-import TopRated from "./TopRated"
-import Reward from "./Reward"
-import BitcoinValveSection from "./BitcoinValveSection"
-import FrequentlyAskQuestion from "./FrequentlyAskQuestion"
-import SumbitForNewLetter from "./SumbitForNewLetter"
+import TopRated from "./components/TopRated"
+import Reward from "./components/Reward"
+import BitcoinValveSection from "./components/BitcoinValveSection"
+import FrequentlyAskQuestion from "./components/FrequentlyAskQuestion"
+import SumbitForNewLetter from "./components/SumbitForNewLetter"
 // import { useDispatch } from "react-redux"
 // import { getPopularDrugs } from "../../store/actions/homeMedicineAction";
-
+import { useQuery } from "@tanstack/react-query"
+import { getPopularDrugAPI } from "@/service/homeAPI"
+import { getCurrentUserAPI } from "@/service/authAPI"
 
 const Home = (props) => {
   // const dispatch = useDispatch()
   // useEffect(() => {
   //   dispatch(getPopularDrugs())
   // }, [dispatch])
+  const user = useQuery({ queryKey: ['user'], queryFn: getCurrentUserAPI })
+  console.log(user)
+  const popularDrug = useQuery({ queryKey: ['popularDrug'], queryFn: getPopularDrugAPI })
+  const data = { ...props, ...popularDrug }
 
   return (
     <Fragment>
@@ -24,8 +30,8 @@ const Home = (props) => {
       <AvailablePharmacies {...props} />
       <HowItsWorks {...props} />
       {/* <PresciptionCard {...props} /> */}
-      <TopRated {...props} />
-      <Reward {...props} />
+      <TopRated {...data} />
+      <Reward {...data} />
       <BitcoinValveSection {...props} />
       <FrequentlyAskQuestion {...props} />
       <SumbitForNewLetter {...props} />

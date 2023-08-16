@@ -1,6 +1,6 @@
 import Image from "next/image"
-import bitcoin from "../../assets/bitcoin.webp"
-import medicineBox from "../../assets/medicineBox.webp"
+import bitcoin from "../../../assets/bitcoin.webp"
+import medicineBox from "../../../assets/medicineBox.webp"
 // import { Input } from 'antd';
 // import { useRouter } from "next/router";
 import { Trans } from "next-i18next";

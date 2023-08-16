@@ -1,5 +1,5 @@
 // import "../styles.scss"
-import Modal from "../../Home/Modal";
+import Modal from "../../home/components/Modal";
 import { Card, Result, Empty, Row, Col } from "antd";
 import { ReactSVG } from "react-svg";
 import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'react'

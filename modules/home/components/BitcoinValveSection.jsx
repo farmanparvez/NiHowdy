@@ -1,20 +1,25 @@
 import { useState, useEffect } from "react"
-import img from "../../assets/bitcoin1.svg"
-import img1 from "../../assets/doller.png"
-import bg from "../../assets/bg-bitcoin-removebg-preview.png"
-import { getRewardValueInYear } from "../../store/actions/homeMedicineAction"
-import { useDispatch, useSelector } from "react-redux"
-import { CsSpin } from "../../components/ui"
+import img from "../../../assets/bitcoin1.svg"
+import img1 from "../../../assets/doller.png"
+import bg from "../../../assets/bg-bitcoin-removebg-preview.png"
+// import { getRewardValueInYear } from "../../../store/actions/homeMedicineAction"
+// import { useDispatch, useSelector } from "react-redux"
+import { CsSpin } from "../../../components/ui"
 import Image from "next/image"
+import { getRewardValueInYearAPI } from "@/service/homeAPI"
+import { useQuery } from "@tanstack/react-query"
 
 const BitcoinValveSection = ({ t }) => {
   const [changeItem, setChangeItem] = useState(false)
-  const { isLoading, getRewardValueInYearDetails } = useSelector(({ home }) => home)
-  const dispatch = useDispatch()
+  // const { getRewardValueInYearDetails } = useSelector(({ home }) => home)
+  // const dispatch = useDispatch()
+  const { isLoading, data, refetch } = useQuery({ queryKey: ['getRewardValueInYear'], queryFn: getRewardValueInYearAPI })
+  const getRewardValueInYearDetails = data?.data || []
 
   useEffect(() => {
-    dispatch(getRewardValueInYear())
-  }, [dispatch, changeItem])
+    // dispatch(getRewardValueInYear())
+    refetch()
+  }, [changeItem, refetch])
 
   return (
     <CsSpin spinning={isLoading}>

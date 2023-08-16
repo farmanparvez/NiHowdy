@@ -1,11 +1,11 @@
 import Image from "next/image";
-import walgreen from "../../assets/walgreen.svg";
-import cvs from "../../assets/cvsh.svg";
-import wegmans from "../../assets/wegmans.svg";
-import walmart from "../../assets/walmart.svg";
-import costco from "../../assets/costco.svg";
-import Kroger from "../../assets/Kroger.svg";
-import alarm from "../../assets/alarm.svg";
+import walgreen from "../../../assets/walgreen.svg";
+import cvs from "../../../assets/cvsh.svg";
+import wegmans from "../../../assets/wegmans.svg";
+import walmart from "../../../assets/walmart.svg";
+import costco from "../../../assets/costco.svg";
+import Kroger from "../../../assets/Kroger.svg";
+import alarm from "../../../assets/alarm.svg";
 
 
 const AvailablePharmacies = () => {

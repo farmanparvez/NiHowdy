@@ -12,9 +12,16 @@ import Head from 'next/head';
 import NProgress from 'nprogress';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import React from 'react'
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 function App({ Component, pageProps }) {
   const { store, props } = wrapper.useWrappedStore(pageProps);
+  const [queryClient] = React.useState(() => new QueryClient())
   const router = useRouter()
 
   useEffect(() => {
@@ -25,14 +32,18 @@ function App({ Component, pageProps }) {
 
   return (
     <SessionProvider session={props.session}>
-      <Provider store={store}>
-        <ConfigProvider theme={theme}>
-          <Head>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-          </Head>
-          <Layout Component={Component} pageProps={props.pageProps} />
-        </ConfigProvider>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Provider store={store}>
+            <ConfigProvider theme={theme}>
+              <Head>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+              </Head>
+              <Layout Component={Component} pageProps={props.pageProps} />
+            </ConfigProvider>
+          </Provider>
+        </Hydrate>
+      </QueryClientProvider>
     </SessionProvider>
   )
 }

@@ -7,9 +7,9 @@ import email from '../../assets/email.svg'
 import Print from '../../assets/Print.svg'
 import download from '../../assets/download.svg'
 import Slider from "react-slick";
-import { getCardDetaiails } from '../../store/actions/homeMedicineAction';
+import { getCardDetaiails } from '../../../store/actions/homeMedicineAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { CsSpin, CsButton } from '../../components/ui';
+import { CsSpin, CsButton } from '../../../components/ui';
 import walgreen from "../../assets/walgreen.svg";
 import cvs from "../../assets/cvsh.svg";
 import walmart from "../../assets/walmart.svg";
@@ -18,7 +18,7 @@ import { Result, Empty } from 'antd';
 import { useReactToPrint } from 'react-to-print';
 import html2canvas from "html2canvas";
 import Image from 'next/image';
-import { sendEmailSavingCard } from '../../store/actions/savingCard';
+import { sendEmailSavingCard } from '../../../store/actions/savingCard';
 import { RightCircleTwoTone, LeftCircleTwoTone } from '@ant-design/icons';
 
 function SampleNextArrow(props) {
@@ -207,7 +207,7 @@ const PresciptionCard = ({ t }) => {
                         </div>
                     </Card>
                 </div>
-            </div >
+            </div>
         )
     })
 
